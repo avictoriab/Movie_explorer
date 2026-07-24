@@ -1,30 +1,43 @@
-from config import API_KEY
-from api import search_movie
+from api import search_movie, format_value, display_movie
 
-response = search_movie("Interstellar")
+while True:
 
-data = response.json()
+    movie_name = input("Ingrese el nombre de la película: ").strip()
 
-#Imprimir todos los datos del diccionario
-#print(data) 
+    if not movie_name:
+        print("Debe ingresar un nombre de película")
+    else:
+        movies = search_movie(movie_name)
 
-#Inspeccionar el diccionario para conocer sus llaves principales
-#print(data.keys())
+    print("\nResultados Obtenidos\n")
 
-#Imprimir la lista de peliculas usando la llave principal "results"
-#print(data["results"])
+    for index, movie in enumerate(movies, start=1):
 
-#Imprimir cuantas peliculas encontro
-#print(len(data["results"]))
+        print(f"{index}. {format_value(movie['title'])} ({format_value(movie['release_date'][:4])})")
 
-#Acceder al primer elemento
-first_movie = data["results"][0]
-#Inspeccionar las llaves principales
-print(first_movie.keys())
-#Imprimir solo las llaves con la informacion deseada
-print(f"""
-Título: {first_movie['title']}
-Fecha de estreno: {first_movie['release_date']}
-Puntuación: {first_movie['vote_average']}
-Sinopsis: {first_movie['overview']}
-""")
+
+    while True:
+
+        try:
+            selected_index = int(input("\nSeleccione una película: "))
+
+            if 1 <= selected_index <= len(movies):
+                break
+
+            print(f"Ingrese un número entre 1 y {len(movies)}.")
+
+        except ValueError:
+            print("Debe ingresar un número.")
+
+    selected_movie = movies[selected_index - 1]
+
+    if movie:
+        display_movie(selected_movie)
+    else:
+        print("No se encontraron resultados.")
+
+    option = input("\n¿Desea buscar otra película? (s/n): ")
+
+    if option.lower() != "s":
+        break
+
