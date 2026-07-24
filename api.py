@@ -23,13 +23,3 @@ def search_movie(movie_name):
    
     return data["results"]
 
-def format_value(value):
-    if value:
-        return value
-    return "No disponible"
-
-def display_movie(movie):
-    print(f"\nTítulo: {format_value(movie['title'])}")
-    print(f"Fecha de estreno: {format_value(movie['release_date'])}")
-    print(f"Puntuación: {format_value(movie['vote_average'])}")
-    print(f"Sinopsis: {format_value(movie['overview'])}")

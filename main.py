@@ -1,20 +1,23 @@
-from api import search_movie, format_value, display_movie
+from api import search_movie
+from display import display_movie, display_movies
 
 while True:
 
+   
     movie_name = input("Ingrese el nombre de la película: ").strip()
 
-    if not movie_name:
+    if not movie_name: 
         print("Debe ingresar un nombre de película")
-    else:
-        movies = search_movie(movie_name)
+        continue
+   
+    movies = search_movie(movie_name)
 
-    print("\nResultados Obtenidos\n")
+    if not movies:
+        print("No hay coincidencias")
+        continue
 
-    for index, movie in enumerate(movies, start=1):
-
-        print(f"{index}. {format_value(movie['title'])} ({format_value(movie['release_date'][:4])})")
-
+    display_movies(movies)
+    
 
     while True:
 
@@ -31,13 +34,13 @@ while True:
 
     selected_movie = movies[selected_index - 1]
 
-    if movie:
-        display_movie(selected_movie)
-    else:
-        print("No se encontraron resultados.")
+    display_movie(selected_movie)
 
     option = input("\n¿Desea buscar otra película? (s/n): ")
 
     if option.lower() != "s":
         break
+
+    
+        
 
