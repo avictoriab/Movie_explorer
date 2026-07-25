@@ -1,8 +1,4 @@
-
-def format_value(value):
-    if value:
-        return value
-    return "No disponible"
+from utils import format_value
 
 def display_movie(movie):
     print(f"\nTítulo: {format_value(movie['title'])}")

@@ -3,7 +3,6 @@ from display import display_movie, display_movies
 
 while True:
 
-   
     movie_name = input("Ingrese el nombre de la película: ").strip()
 
     if not movie_name: 
@@ -18,7 +17,6 @@ while True:
 
     display_movies(movies)
     
-
     while True:
 
         try:

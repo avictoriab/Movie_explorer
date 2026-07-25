@@ -1,0 +1,2 @@
+API_KEY = "TU_CLAVE_DE_TMDB"
+LANGUAGE = "es-ES"
