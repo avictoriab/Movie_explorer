@@ -1,6 +1,6 @@
-# Movie Finder
+# Movie Explorer
 
-Movie Finder is a Python application that allows users to search for movies using the TMDB (The Movie Database) API.
+Movie Explorer is a Python application that allows users to search for movies using the TMDB (The Movie Database) API.
 
 The application provides a simple web interface built with Streamlit, where users can search for a movie, browse the results, and view detailed information about each title.
 
