@@ -18,6 +18,7 @@ if st.button("Buscar"):
         st.warning("No se encontraron coincidencias.")
     else:
         st.session_state.movies = movies
+        st.session_state.selected_movie = None
 
 
 if st.session_state.selected_movie:
